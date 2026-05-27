@@ -1,19 +1,28 @@
-import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
+import {
+  About,
+  Blog,
+  Gallery,
+  Home,
+  Newsletter,
+  Person,
+  Social,
+  Work,
+} from "@/types";
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
-  firstName: "Selene",
-  lastName: "Yu",
-  name: `Selene Yu`,
-  role: "Design Engineer",
+  firstName: "Alexander",
+  lastName: "Fehsenfeld",
+  name: `Alexander Fehsenfeld`,
+  role: "Full Stack Software Engineer",
   avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  email: "fehsenfeld.xander@gmail.com",
+  location: "America/Los_Angeles", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: ["English"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter: Newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: <>My weekly newsletter about creativity and engineering</>,
 };
@@ -25,25 +34,13 @@ const social: Social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system",
+    link: "https://github.com/xanderfehsenfeld",
     essential: true,
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-    essential: true,
-  },
-  {
-    name: "Instagram",
-    icon: "instagram",
-    link: "https://www.instagram.com/once_ui/",
-    essential: false,
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    link: "https://www.linkedin.com/in/alexander-fehsenfeld-b96623120/",
     essential: true,
   },
   {
@@ -76,8 +73,13 @@ const home: Home = {
   },
   subline: (
     <>
-    I'm Selene, a design engineer at <Text as="span" size="xl" weight="strong">ONCE UI</Text>, where I craft intuitive <br /> user experiences. After hours, I build my own projects.
-</>
+      I'm Selene, a design engineer at{" "}
+      <Text as="span" size="xl" weight="strong">
+        ONCE UI
+      </Text>
+      , where I craft intuitive <br /> user experiences. After hours, I build my
+      own projects.
+    </>
   ),
 };
 
@@ -102,9 +104,11 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Full-Stack Software Engineer enthusiastic about data processing and UX.
+        Extensive experience in building and maintaining web applications and
+        data pipelines. Proficient in Python, Typescript, C# and Dart. Adept at
+        REST APIs, data pipelines, and enhancing user interfaces. Skilled in
+        utilizing LLMs and cloud technologies.
       </>
     ),
   },
@@ -113,18 +117,18 @@ const about: About = {
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "LiveOcean",
+        timeframe: "May 2024 - Present",
+        role: "Full Stack Software Engineer",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Modernized the LiveOcean oceanography data platform with a focus on
+            simplified development lifecycle, improved data visualization, and
+            back-end data fetching. Created an original performant map data
+            visualization to efficiently animate 10,000 interactive points on
+            OpenStreetMap.
           </>,
-          <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
-          </>,
+          <>Reduced deployment time 75% with CI/CD pipeline and Netlify</>,
         ],
         images: [
           // optional: leave the array empty if you don't want to display images
@@ -137,17 +141,20 @@ const about: About = {
         ],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Spont Club",
+        timeframe: "Nov 2022 - May 2024",
+        role: "Chief Technology Officer",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Led technical design and development of a Flutter iOS social app
+            featuring analytics, user data processing, push notifications, and
+            SSO authentication. Built a scalable Node.js microservice backend on
+            Google Cloud with TDD, automated deployments, and mentored a
+            cross-functional development team.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Owned the OAuth 2.0 SSO feature with support for Facebook,
+            Instagram, and phone number
           </>,
         ],
         images: [],
@@ -159,12 +166,8 @@ const about: About = {
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
-      },
-      {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Colorado College",
+        description: <>Studied Computer Science</>,
       },
     ],
   },
@@ -232,15 +235,6 @@ const about: About = {
   },
 };
 
-const blog: Blog = {
-  path: "/blog",
-  label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
-};
-
 const work: Work = {
   path: "/work",
   label: "Work",
@@ -301,4 +295,4 @@ const gallery: Gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+export { person, social, newsletter, home, about, work, gallery };

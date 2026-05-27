@@ -18,6 +18,15 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/about',
+        permanent: true,
+      },
+    ]
+  },
   sassOptions: {
     compiler: "modern",
     silenceDeprecations: ["legacy-js-api"],
