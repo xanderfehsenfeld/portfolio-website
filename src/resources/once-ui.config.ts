@@ -11,7 +11,6 @@ import {
   SocialSharingConfig,
   StyleConfig,
 } from "@/types";
-import { home } from "./index";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
 const baseURL: string = "https://demo.magic-portfolio.com";
@@ -39,6 +38,7 @@ const protectedRoutes: ProtectedRoutesConfig = {
 // Import and set font for each variant
 import { Geist } from "next/font/google";
 import { Geist_Mono } from "next/font/google";
+import { about, person } from "./content";
 
 const heading = Geist({
   variable: "--font-heading",
@@ -189,15 +189,8 @@ const schema: SchemaConfig = {
   logo: "",
   type: "Organization",
   name: "Once UI",
-  description: home.description,
-  email: "lorant@once-ui.com",
-};
-
-// social links
-const sameAs: SameAsConfig = {
-  threads: "https://www.threads.com/@once_ui",
-  linkedin: "https://www.linkedin.com/company/once-ui/",
-  discord: "https://discord.com/invite/5EyAQ4eNdS",
+  description: about.description,
+  email: person.email,
 };
 
 // social sharing configuration for blog posts
@@ -225,7 +218,6 @@ export {
   fonts,
   style,
   schema,
-  sameAs,
   socialSharing,
   effects,
   dataStyle,

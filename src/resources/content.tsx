@@ -14,7 +14,7 @@ const person: Person = {
   firstName: "Alexander",
   lastName: "Fehsenfeld",
   name: `Alexander Fehsenfeld`,
-  role: "Full Stack Software Engineer",
+  role: "Software Development Engineer",
   avatar: "/images/avatar.jpg",
   email: "fehsenfeld.xander@gmail.com",
   location: "America/Los_Angeles", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
@@ -51,38 +51,6 @@ const social: Social = [
   },
 ];
 
-const home: Home = {
-  path: "/",
-  image: "/images/og/home.jpg",
-  label: "Home",
-  title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
-  featured: {
-    display: true,
-    title: (
-      <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
-        <Line background="brand-alpha-strong" vert height="20" />
-        <Text marginRight="4" onBackground="brand-medium">
-          Featured work
-        </Text>
-      </Row>
-    ),
-    href: "/work/building-once-ui-a-customizable-design-system",
-  },
-  subline: (
-    <>
-      I'm Selene, a design engineer at{" "}
-      <Text as="span" size="xl" weight="strong">
-        ONCE UI
-      </Text>
-      , where I craft intuitive <br /> user experiences. After hours, I build my
-      own projects.
-    </>
-  ),
-};
-
 const about: About = {
   path: "/about",
   label: "About",
@@ -95,20 +63,16 @@ const about: About = {
   avatar: {
     display: true,
   },
-  calendar: {
-    display: true,
-    link: "https://cal.com",
-  },
   intro: {
     display: true,
     title: "Introduction",
     description: (
       <>
-        Full-Stack Software Engineer enthusiastic about data processing and UX.
-        Extensive experience in building and maintaining web applications and
-        data pipelines. Proficient in Python, Typescript, C# and Dart. Adept at
-        REST APIs, data pipelines, and enhancing user interfaces. Skilled in
-        utilizing LLMs and cloud technologies.
+        Full-Stack SDE with extensive experience building, deploying, and
+        debugging scalable applications. Specialized in Python, Bash,
+        TypeScript, and C#, with deep expertise in Azure services, DevOps, CI/CD
+        pipelines, and leveraging LLMs and cloud technologies to drive
+        automation and operational efficiency.
       </>
     ),
   },
@@ -295,4 +259,4 @@ const gallery: Gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, work, gallery };
+export { person, social, about, work, gallery };

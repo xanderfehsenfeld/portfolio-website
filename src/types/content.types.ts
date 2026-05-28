@@ -120,13 +120,6 @@ export interface About extends BasePageConfig {
     /** Whether to display the avatar */
     display: boolean;
   };
-  /** Calendar section configuration */
-  calendar: {
-    /** Whether to display the calendar */
-    display: boolean;
-    /** Link to the calendar */
-    link: string;
-  };
   /** Introduction section */
   intro: {
     /** Whether to display the introduction */
