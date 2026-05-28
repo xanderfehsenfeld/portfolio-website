@@ -85,21 +85,34 @@ const about: About = {
         timeframe: "May 2024 - Present",
         role: "Full Stack Software Engineer",
         achievements: [
+          <>Redesigned the UI/UX for the LiveOcean platform.</>,
           <>
-            Modernized the LiveOcean oceanography data platform with a focus on
-            simplified development lifecycle, improved data visualization, and
-            back-end data fetching. Created an original performant map data
-            visualization to efficiently animate 10,000 interactive points on
-            OpenStreetMap.
+            Spearheaded a stronger CI/CD pipeline, reducing deployment time 75%.
           </>,
-          <>Reduced deployment time 75% with CI/CD pipeline and Netlify</>,
         ],
         images: [
-          // optional: leave the array empty if you don't want to display images
           {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
+            src: "/images/projects/LiveOcean/article-page-dark-mobile.png",
+            alt: "LiveOcean article page mobile",
+            width: 9,
+            height: 9,
+          },
+          {
+            src: "/images/projects/LiveOcean/home-page-dark-desktop.png",
+            alt: "LiveOcean home page desktop",
+            width: 9,
+            height: 9,
+          },
+          {
+            src: "/images/projects/LiveOcean/interactive-page-light-animation.gif",
+            alt: "LiveOcean data visualization",
+            width: 9,
+            height: 16,
+          },
+          {
+            src: "/images/projects/LiveOcean/interactive-page-light-desktop.png",
+            alt: "LiveOcean interactive page desktop",
+            width: 9,
             height: 9,
           },
         ],
@@ -110,19 +123,69 @@ const about: About = {
         role: "Chief Technology Officer",
         achievements: [
           <>
-            Led technical design and development of a Flutter iOS social app
-            featuring analytics, user data processing, push notifications, and
-            SSO authentication. Built a scalable Node.js microservice backend on
-            Google Cloud with TDD, automated deployments, and mentored a
-            cross-functional development team.
+            Led technical design and development of Spont Club's flagship social
+            media app.
           </>,
           <>
-            Owned the OAuth 2.0 SSO feature with support for Facebook,
-            Instagram, and phone number
+            Automated deployment to target iOS and Android devices, enabling
+            developers to iterate 60% faster.
+          </>,
+        ],
+        images: [
+          {
+            src: "/images/projects/spont/Spont_App Icon_HR_2400.png",
+            alt: "Spont Club Project image",
+            width: 9,
+            height: 9,
+          },
+        ],
+      },
+      {
+        company: "Delhivery",
+        timeframe: "Feb 2022 - Oct 2022",
+        role: "Software Engineer",
+        achievements: [
+          <>
+            Worked with a team to build multiple React web apps to integrate
+            with Delhivery's Logistix API.
+          </>,
+          <>
+            Led push for CI/CD Github Actions YAML to improve developer team
+            experience
           </>,
         ],
         images: [],
       },
+      {
+        company: "Microsoft Education",
+        timeframe: "Nov 2019 - Feb 2022",
+        role: "Front-end Engineer",
+        achievements: [
+          <>
+            In first 3 months of employment, removed 5,076 lines of dead code
+          </>,
+          <>
+            Provided consistent, constructive feedback as required pull request
+            reviewer
+          </>,
+        ],
+        images: [],
+      },
+      // {
+      //   company: "UpTopHealth",
+      //   timeframe: "May 2017 - Feb 2022",
+      //   role: "Software Developer",
+      //   achievements: [
+      //     <>
+      //       Worked with a team of UX researchers and designers to build
+      //       accessible, beautiful, and intuitive apps for a variety of clients
+      //       and business applications. Collaborated on team sizes from 1 to 30+
+      //       to build web, mobile, cross-platform and speech solutions and
+      //       experiments.
+      //     </>,
+      //   ],
+      //   images: [],
+      // },
     ],
   },
   studies: {
@@ -169,12 +232,12 @@ const about: About = {
       {
         title: "Next.js",
         description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+          <>Building next gen apps with Next.js + TailwindCSS + Netlify.</>
         ),
         tags: [
           {
-            name: "JavaScript",
-            icon: "javascript",
+            name: "Typescript",
+            icon: "BsTypescript",
           },
           {
             name: "Next.js",
