@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oceanography Website Demo — Developer Explainer</title>
+  <style>
+    :root {
+      --ocean-deep: #042C53;
+      --ocean-mid: #185FA5;
+      --ocean-light: #E6F1FB;
+      --teal-deep: #085041;
+      --teal-mid: #1D9E75;
+      --teal-light: #E1F5EE;
+      --amber-mid: #854F0B;
+      --amber-light: #FAEEDA;
+      --purple-mid: #534AB7;
+      --purple-light: #EEEDFE;
+      --text: #1a1a1a;
+      --text-secondary: #555;
+      --text-muted: #888;
+      --border: #e2e2e2;
+      --surface: #f9f9f8;
+      --bg: #ffffff;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --ocean-deep: #B5D4F4;
+        --ocean-mid: #85B7EB;
+        --ocean-light: #0C447C;
+        --teal-deep: #9FE1CB;
+        --teal-mid: #5DCAA5;
+        --teal-light: #04342C;
+        --amber-mid: #FAC775;
+        --amber-light: #633806;
+        --purple-mid: #CECBF6;
+        --purple-light: #3C3489;
+        --text: #f0f0f0;
+        --text-secondary: #bbb;
+        --text-muted: #888;
+        --border: #333;
+        --surface: #1a1a1a;
+        --bg: #121212;
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .page {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+    }
+
+    /* Header */
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Pills */
+    .pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 2rem; }
+    .pill {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .pill-teal   { background: var(--teal-light);   color: var(--teal-deep); }
+    .pill-blue   { background: var(--ocean-light);  color: var(--ocean-deep); }
+    .pill-amber  { background: var(--amber-light);  color: var(--amber-mid); }
+    .pill-purple { background: var(--purple-light); color: var(--purple-mid); }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+      margin-bottom: 2rem;
+    }
+    .stat {
+      background: var(--surface);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .stat-n {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-l { font-size: 12px; color: var(--text-muted); }
+
+    /* Divider */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    /* Section label */
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Timeline */
+    .timeline { padding-left: 1.5rem; position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .titem {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+    .titem::before {
+      content: '';
+      position: absolute;
+      left: -25px;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+    }
+    .titem.active::before {
+      border-color: var(--teal-mid);
+      background: var(--teal-light);
+    }
+
+    .titem-phase {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 3px;
+    }
+    .titem h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .titem p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 4px;
+    }
+
+    /* Callout */
+    .callout {
+      border-left: 3px solid var(--teal-mid);
+      background: var(--teal-light);
+      border-radius: 0 8px 8px 0;
+      padding: 10px 14px;
+      margin: 8px 0;
+      font-size: 13px;
+      color: var(--teal-deep);
+      line-height: 1.6;
+    }
+
+    /* Highlights list */
+    .highlights { list-style: none; }
+    .highlights li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .highlights li:last-child { border-bottom: none; }
+
+    .hi-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .hi-teal   { background: var(--teal-light);   color: var(--teal-mid); }
+    .hi-blue   { background: var(--ocean-light);  color: var(--ocean-mid); }
+    .hi-amber  { background: var(--amber-light);  color: var(--amber-mid); }
+    .hi-purple { background: var(--purple-light); color: var(--purple-mid); }
+
+    .hi-icon svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* Footer links */
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .footer-links a {
+      font-size: 13px;
+      color: var(--ocean-mid);
+      text-decoration: none;
+    }
+    .footer-links a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <p class="eyebrow">Developer portfolio · Full-stack</p>
+    <h1>Oceanography Website Demo</h1>
+    <p class="tagline">A modern reimplementation of UW's LiveOcean — turning a static HTML oceanography site into a production-grade, interactive data visualization platform.</p>
+
+    <div class="pills">
+      <span class="pill pill-teal">Next.js 16</span>
+      <span class="pill pill-blue">TypeScript</span>
+      <span class="pill pill-teal">Leaflet.js</span>
+      <span class="pill pill-blue">D3.js</span>
+      <span class="pill pill-amber">Pixi.js / WebGL</span>
+      <span class="pill pill-teal">MapLibre</span>
+      <span class="pill pill-purple">MDX</span>
+      <span class="pill pill-blue">Tailwind CSS</span>
+      <span class="pill pill-purple">Radix UI</span>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-n">163</div><div class="stat-l">commits</div></div>
+      <div class="stat"><div class="stat-n">39</div><div class="stat-l">merged pull requests</div></div>
+      <div class="stat"><div class="stat-n">55%</div><div class="stat-l">TypeScript by line</div></div>
+      <div class="stat"><div class="stat-n">3</div><div class="stat-l">rendering engines</div></div>
+    </div>
+
+    <hr />
+
+    <p class="section-label">Developer journey · key phases</p>
+
+    <div class="timeline">
+
+      <div class="titem active">
+        <p class="titem-phase">Phase 1 · Foundation</p>
+        <h3>Scaffolding for scientific content</h3>
+        <p>Bootstrapped from a Next.js documentation template, then immediately restructured around an MDX content pipeline and SSR. TypeScript strict mode, content-generation scripts, and multi-level navigation were established from the outset.</p>
+      </div>
+
+      <div class="titem active">
+        <p class="titem-phase">Phase 2 · Geographic visualization</p>
+        <h3>Bringing the ocean to the browser</h3>
+        <p>Integrated Leaflet + MapLibre + react-leaflet to render the Puget Sound, Salish Sea, and Pacific coast, with D3.js layered on top for custom data-driven overlays. A key detail: the map tile layer uses <strong>custom OpenStreetMap vector tiles</strong> generated offline and self-hosted in a companion repository, served as static files via GitHub Pages — no dependency on any external tile service.</p>
+        <div class="callout">
+          Custom tiles repo: <a href="https://xanderfehsenfeld.github.io/openmap-tiles-demo" style="color: inherit; font-weight: 600;">xanderfehsenfeld.github.io/openmap-tiles-demo</a> — demonstrates end-to-end ownership of the full map tile pipeline.
+        </div>
+      </div>
+
+      <div class="titem active">
+        <p class="titem-phase">Phase 3 · High-performance particle rendering</p>
+        <h3>WebGL drifters on a live map</h3>
+        <p>Added Pixi.js (via <code>leaflet-pixi-overlay</code>) to animate thousands of simulated ocean surface drifters in real time — a WebGL rendering pipeline layered directly onto the Leaflet canvas for GPU-accelerated particle motion.</p>
+        <div class="callout">
+          <strong>Performance challenge:</strong> Initial implementation caused frame-rate drops and UI jank. Particle path geometry was being computed and rendered synchronously on every frame tick, blocking the main JavaScript thread during heavy update cycles.<br /><br />
+          <strong>Solution:</strong> Particle paths (the trail lines showing each drifter's history) were refactored to render <strong>lazily</strong> — computed and drawn only on demand rather than every frame. This decoupled expensive geometry work from the animation loop, keeping the UI thread free and maintaining smooth playback even at scale. A current open PR further extracts all playback state into a dedicated custom React hook.
+        </div>
+      </div>
+
+      <div class="titem">
+        <p class="titem-phase">Phase 4 · Developer experience</p>
+        <h3>Production discipline on a solo project</h3>
+        <p>Introduced Husky git hooks, ESLint with TypeScript-aware rules, Prettier with import sorting, and a <code>clean</code> script enforced on every commit. 39 merged pull requests on a solo project signals deliberate, feature-branch–driven development rather than direct-to-main commits.</p>
+      </div>
+
+      <div class="titem">
+        <p class="titem-phase">Phase 5 · Content platform</p>
+        <h3>More than just maps</h3>
+        <p>Shipped dark/light mode, fuzzy search with term highlighting, auto-generated table of contents, LaTeX math via KaTeX, Mermaid.js diagrams, syntax-highlighted code blocks, and Radix UI primitives — a complete scientific knowledge base that embeds live interactive visualizations in documentation pages.</p>
+      </div>
+
+    </div>
+
+    <hr />
+
+    <p class="section-label">Technical highlights</p>
+
+    <ul class="highlights">
+      <li>
+        <div class="hi-icon hi-teal">
+          <svg viewBox="0 0 24 24"><polygon points="3,11 12,2 21,11"/><polyline points="3,11 3,20 21,20 21,11"/></svg>
+        </div>
+        <span><strong>Three rendering engines, zero conflicts.</strong> Leaflet manages tile maps and user interaction; D3 handles data-driven SVG overlays; Pixi.js runs a WebGL particle layer — all coordinated in a single React component tree without mutual interference.</span>
+      </li>
+      <li>
+        <div class="hi-icon hi-blue">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12,2 C16,6 16,18 12,22 C8,18 8,6 12,2"/></svg>
+        </div>
+        <span><strong>Self-hosted vector tiles.</strong> Custom OpenStreetMap tiles generated offline and served as static files, eliminating any dependency on external tile APIs and demonstrating full ownership of the map tile pipeline.</span>
+      </li>
+      <li>
+        <div class="hi-icon hi-amber">
+          <svg viewBox="0 0 24 24"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>
+        </div>
+        <span><strong>Lazy rendering for UI thread health.</strong> Particle path geometry is computed on demand rather than synchronously per frame — a deliberate architectural choice that keeps animation smooth at scale.</span>
+      </li>
+      <li>
+        <div class="hi-icon hi-blue">
+          <svg viewBox="0 0 24 24"><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></svg>
+        </div>
+        <span><strong>Full TypeScript coverage.</strong> Type definitions span custom geographic data structures, Leaflet extension types, D3 selections, and Pixi.js display objects — not surface-level typing.</span>
+      </li>
+      <li>
+        <div class="hi-icon hi-teal">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <span><strong>Interactive drifter simulation.</strong> Users click individual particles to trace forecast paths, or click the map to select and highlight groups by proximity — turning a scientific model into an exploratory spatial tool.</span>
+      </li>
+      <li>
+        <div class="hi-icon hi-purple">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+        </div>
+        <span><strong>MDX-powered scientific documentation.</strong> Content pages embed live React components — maps, diagrams, math expressions — directly alongside prose, with SSR for fast load and SEO-ready metadata.</span>
+      </li>
+    </ul>
+
+    <hr />
+
+    <div class="footer-links">
+      <a href="https://dreamy-dragon-8b4e86.netlify.app/interactive/drifters/pugetsound" target="_blank">Live demo — Puget Sound drifters ↗</a>
+      <a href="https://github.com/xanderfehsenfeld/oceanography-website-demo" target="_blank">GitHub repository ↗</a>
+      <a href="https://xanderfehsenfeld.github.io/openmap-tiles-demo" target="_blank">Custom map tiles ↗</a>
+    </div>
+
+  </div>
+</body>
+</html>

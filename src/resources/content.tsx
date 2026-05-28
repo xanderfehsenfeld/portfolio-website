@@ -9,6 +9,7 @@ import {
   Work,
 } from "@/types";
 import { Line, Row, Text } from "@once-ui-system/core";
+import Link from "next/link";
 
 const person: Person = {
   firstName: "Alexander",
@@ -19,12 +20,6 @@ const person: Person = {
   email: "fehsenfeld.xander@gmail.com",
   location: "America/Los_Angeles", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: ["English"], // optional: Leave the array empty if you don't want to display languages
-};
-
-const newsletter: Newsletter = {
-  display: false,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: <>My weekly newsletter about creativity and engineering</>,
 };
 
 const social: Social = [
@@ -85,7 +80,27 @@ const about: About = {
         timeframe: "May 2024 - Present",
         role: "Full Stack Software Engineer",
         achievements: [
-          <>Redesigned the UI/UX for the LiveOcean platform.</>,
+          <>
+            Redesigned the UI/UX for the LiveOcean platform {"("}
+            <Link
+              target="_blank"
+              href={
+                "https://faculty.washington.edu/pmacc/LO/tides_background.html"
+              }
+            >
+              before
+            </Link>
+            /
+            <Link
+              target="_blank"
+              href={
+                "https://dreamy-dragon-8b4e86.netlify.app/docs/background/tides_background"
+              }
+            >
+              after
+            </Link>
+            {")."}
+          </>,
           <>
             Spearheaded a stronger CI/CD pipeline, reducing deployment time 75%.
           </>,
